@@ -9,4 +9,6 @@ plus the head of list
   (cond
     ((null? L) #f) ;Return #f aka empty list
     ((list? (car L)) (append (reverse-general (cdr l)) (list (reverse-general (car L))))) ;If head is list, append the function call on tail with function call on head
+    (else (append (reverse-general (cdr L)) (list (car L)))) ;Append the head at the end
+   )
 )
