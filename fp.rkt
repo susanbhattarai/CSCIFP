@@ -44,12 +44,26 @@ plus the head of list
 )
 
 ;Function that takes a list and number as variable and return the number larger than the number
+#|
 (define (larger-number L1 num)
   (cond
     ((null? L1) #f)
     ((not (number? (car L1))) (larger-number (cdr L1) num))
     ((null? (cdr L1)) (car L1))
-    ((> (car L1) (larger-number (cdr l1) num)) (car L1))
+    ((> (- (car L1) num) (- (larger-number (cdr l1) num) num)) (car L1))
     (#t (larger-number (cdr L1) num))
   )
 )
+|#
+
+;Larger num recursive function
+(define (larger-number L1 num)
+  (cond
+    ((null? L1) #f)
+    ((not (number? (car L1))) (larger-number (cdr L1) num))
+    ((> (car L1) num) (larger-number-tail (cdr L1) num (car L1)))
+    (#t (larger-number (cdr L1) num))
+  )
+)
+
+
