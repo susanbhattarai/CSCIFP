@@ -25,7 +25,7 @@ plus the head of list
   (cond
     ((null? L) #f)
     ((null? (cdr L)) (car L))
-    (#t (min-val-tail (cdr L1) (cat L1)))
+    (#t (min-val-tail (cdr L) (car L)))
   )
 )
 
@@ -33,7 +33,7 @@ plus the head of list
 (define (min-val-tail L1 L2)
   (cond
     ((null? L1) L2)
-    ((< (car L1) (L2)) (min-val-tail (cdr L1) (car L1)))
+    ((< (car L1) L2) (min-val-tail (cdr L1) (car L1)))
     (#t (min-val-tail (cdr L1) L2))
   )
 )
