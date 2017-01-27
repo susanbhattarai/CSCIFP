@@ -14,7 +14,6 @@ plus the head of list
   )
 )
 
-
 ;Question2(All Test cases passed)
 (define (sum-up-numbers-simple L)
   (cond
@@ -24,7 +23,7 @@ plus the head of list
   )
 )
 
-;Question3
+;Question3(All test cases passed)
 (define (sum-up-numbers-general L)
   (cond
     ((null? L) 0);Return 0 if null
@@ -34,9 +33,7 @@ plus the head of list
   )
 )
     
-
-
-;Question 4
+;Question 4(All test cases passed)
 (define (min-above-min L1 L2)
   (cond
     ((null? L1) #f);if L1 is null, return #f
@@ -44,6 +41,7 @@ plus the head of list
     (#t (larger-number L1 (min-val L2)));Else, return the larger-number function
   )
 )
+
 ;Helper function to find the minimum value
 (define (min-val L)
   (cond
