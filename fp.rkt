@@ -28,6 +28,7 @@ plus the head of list
   (cond
     ((null? L) #f)
     ((null? (cdr L)) (car L))
+    ((not (number? (car L))) (min-val (cdr L)))
     (#t (min-val-tail (cdr L) (car L)))
   )
 )
@@ -39,5 +40,16 @@ plus the head of list
     ((not (number? (car L1))) (min-val-tail (cdr L1) L2))
     ((< (car L1) L2) (min-val-tail (cdr L1) (car L1)))
     (#t (min-val-tail (cdr L1) L2))
+  )
+)
+
+;Function that takes a list and number as variable and return the number larger than the number
+(define (larger-number L1 num)
+  (cond
+    ((null? L1) #f)
+    ((not (number? (car L1))) (larger-number (cdr L1) num))
+    ((null? (cdr L1)) (car L1))
+    ((> (car L1) (larger-number (cdr l1) num)) (car L1))
+    (#t (larger-number (cdr L1) num))
   )
 )
