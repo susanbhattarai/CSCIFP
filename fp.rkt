@@ -11,36 +11,35 @@ plus the head of list
     ((list? (car L)) ;If head is list
       (append (reverse-general (cdr l)) (list (reverse-general (car L))))) ;If head is list, append the function call on tail with function call on head
     (else (append (reverse-general (cdr L)) (list (car L)))) ;Append the head at the end
-   )
+  )
 )
 
 
 ;Question 4
 (define (min-above-min L1 L2)
   (cond
-    ((null? L1) #f)
-    ((null? L2) (min-val L1))
-    ((< (min-val L1) (min-val L2)) #f)
-    (#t (larger-number L1 (min-val L2)))
-   )
+    ((null? L1) #f);if L1 is null, return #f
+    ((null? L2) (min-val L1));If L2 is null, return the min of L1
+    (#t (larger-number L1 (min-val L2)));Else, return the larger-number function
+  )
 )
 ;Helper function to find the minimum value
 (define (min-val L)
   (cond
-    ((null? L) #f)
-    ((null? (cdr L)) (car L))
-    ((not (number? (car L))) (min-val (cdr L)))
+    ((null? L) #f);If empty, return #f
+    ((not (number? (car L))) (min-val (cdr L)));If head not num, return with rest of list
+    ((null? (cdr L)) (car L));If rest of list is null, return head
     (#t (min-val-tail (cdr L) (car L)))
   )
 )
 
-;Tail recursive min-val-tail
-(define (min-val-tail L1 L2)
+;Tail recursive implementation for  min-val
+(define (min-val-tail L num)
   (cond
-    ((null? L1) L2)
-    ((not (number? (car L1))) (min-val-tail (cdr L1) L2))
-    ((< (car L1) L2) (min-val-tail (cdr L1) (car L1)))
-    (#t (min-val-tail (cdr L1) L2))
+    ((null? L) num);Checks null
+    ((not (number? (car L))) (min-val-tail (cdr L) num));Check whether the head is num
+    ((< (car L) num) (min-val-tail (cdr L) (car L)));Main case to check if head is greater than num
+    (#t (min-val-tail (cdr L) num));Last condition
   )
 )
 
@@ -48,21 +47,21 @@ plus the head of list
 ;Larger num recursive function
 (define (larger-number L1 num)
   (cond
-    ((null? L1) #f)
-    ((not (number? (car L1))) (larger-number (cdr L1) num))
-    ((> (car L1) num) (larger-number-tail (cdr L1) num (car L1)))
-    (#t (larger-number (cdr L1) num))
+    ((null? L1) #f);If empty, return #f
+    ((not (number? (car L1))) (larger-number (cdr L1) num));If head not a number, return the func with rest of list
+    ((> (car L1) num) (larger-number-tail (cdr L1) num (car L1)));If you find a number greater than num, return the tail recursive function
+    (#t (larger-number (cdr L1) num));Else, base case
   )
 )
 
-;Tail recursion
+;Tail recursion implementation for helper function larger-number
 (define (larger-number-tail L num high)
   (cond
-    ((null? L) high)
-    ((not (number? (car L))) (larger-number-tail (cdr L) num high))
-    ((and (> (car L) num) (< (car L) high)) (larger-number-tail L num (car L)))
-    (#t (larger-number-tail (cdr L) num high))
-   )
+    ((null? L) high); If empty, return high
+    ((not (number? (car L))) (larger-number-tail (cdr L) num high));If head not number, return the function with rest of head
+    ((and (> (car L) num) (< (car L) high)) (larger-number-tail L num (car L)));If the head is greater than num and less than high, it's new high
+    (#t (larger-number-tail (cdr L) num high)); Return the func with rest of list
+  )
 )
 
 
