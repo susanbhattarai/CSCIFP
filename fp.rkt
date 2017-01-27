@@ -17,6 +17,10 @@ plus the head of list
 
 ;Question2
 (define (sum-up-numbers-simple L)
+  (cond
+    ((null? L) 0);Return 0 if null
+    (#t (+ (sum-up-numbers-simple (cdr L)) (car L)));Recur function
+  )
 )
 
 ;Question 4
