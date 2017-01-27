@@ -24,6 +24,17 @@ plus the head of list
   )
 )
 
+;Question3
+(define (sum-up-numbers-general L)
+  (cond
+    ((null? L) 0);Return 0 if null
+    ((number? (car L)) (+ (car L) (sum-up-numbers-general (cdr L))));Return the sum of func and head
+    (else (sum-up-numbers-general (cdr L)));Ignore if atom is non-integer
+  )
+)
+    
+
+
 ;Question 4
 (define (min-above-min L1 L2)
   (cond
