@@ -29,7 +29,7 @@ plus the head of list
   (cond
     ((null? L) 0);Return 0 if null
     ((number? (car L)) (+ (car L) (sum-up-numbers-general (cdr L))));Return the sum of func and head
-    ((list? (car L)) (+ (sum-up-numbers-simple (car L)) (sum-up-numbers-general (cdr L))));Case when head is list
+    ((list? (car L)) (+ (sum-up-numbers-general (car L)) (sum-up-numbers-general (cdr L))));Case when head is list
     (else (sum-up-numbers-general (cdr L)));Ignore if atom is non-integer
   )
 )
