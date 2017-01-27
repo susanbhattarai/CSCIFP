@@ -16,14 +16,24 @@ plus the head of list
 
 
 ;Question 4
-(def (min-above-min L1 L2)
- )
-
+;#
+;(define (min-above-min L1 L2)
+ ;)
+;#|
 ;Helper function to find the minimum value
-(def (min-val L)
+(define (min-val L)
   (cond
     ((null? L) #f)
     ((null? (cdr L)) (car L))
     (#t (min-val-tail (cdr L1) (cat L1)))
+  )
+)
+
+;Tail recursive min-val-tail
+(define (min-val-tail L1 L2)
+  (cond
+    ((null? L1) L2)
+    ((< (car L1) (L2)) (min-val-tail (cdr L1) (car L1)))
+    (#t (min-val-tail (cdr L1) L2))
   )
 )
