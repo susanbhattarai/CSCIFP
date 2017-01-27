@@ -13,3 +13,17 @@ plus the head of list
     (else (append (reverse-general (cdr L)) (list (car L)))) ;Append the head at the end
    )
 )
+
+
+;Question 4
+(def (min-above-min L1 L2)
+ )
+
+;Helper function to find the minimum value
+(def (min-val L)
+  (cond
+    ((null? L) #f)
+    ((null? (cdr L)) (car L))
+    (#t (min-val-tail (cdr L1) (cat L1)))
+  )
+)
