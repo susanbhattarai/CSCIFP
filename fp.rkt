@@ -15,12 +15,12 @@ plus the head of list
 )
 
 
-;Question2
+;Question2(All Test cases passed)
 (define (sum-up-numbers-simple L)
   (cond
     ((null? L) 0);Return 0 if null
     ((number? (car L)) (+ (car L) (sum-up-numbers-simple (cdr L))));Return the sum of func and head
-    (#t (sum-up-numbers-simple (cdr L)));Ignore if atom is non-integer
+    (else (sum-up-numbers-simple (cdr L)));Ignore if atom is non-integer
   )
 )
 
