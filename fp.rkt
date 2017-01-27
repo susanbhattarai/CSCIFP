@@ -16,10 +16,13 @@ plus the head of list
 
 
 ;Question 4
-;#
-;(define (min-above-min L1 L2)
- ;)
-;#|
+(define (min-above-min L1 L2)
+  (cond
+    ((null? L1) #f)
+    ((null? L2) (min-val L1))
+    ((< (min-val L1) (min-val L2)) #f)
+   )
+)
 ;Helper function to find the minimum value
 (define (min-val L)
   (cond
@@ -33,6 +36,7 @@ plus the head of list
 (define (min-val-tail L1 L2)
   (cond
     ((null? L1) L2)
+    ((not (number? (car L1))) (min-val-tail (cdr L1) L2))
     ((< (car L1) L2) (min-val-tail (cdr L1) (car L1)))
     (#t (min-val-tail (cdr L1) L2))
   )
