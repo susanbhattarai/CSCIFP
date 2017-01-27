@@ -19,8 +19,8 @@ plus the head of list
 (define (sum-up-numbers-simple L)
   (cond
     ((null? L) 0);Return 0 if null
-    ((not (number? (car L))) (sum-up-numbers-simple (cdr L)));Ignore if head is not a number
-    (#t (+ (sum-up-numbers-simple (cdr L)) (car L)));Recur function
+    ((number? (car L)) (+ (car L) (sum-up-numbers-simple (cdr L))));Return the sum of func and head
+    (#t (sum-up-numbers-simple (cdr L)));Ignore if atom is non-integer
   )
 )
 
