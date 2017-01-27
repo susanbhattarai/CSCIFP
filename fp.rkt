@@ -15,6 +15,10 @@ plus the head of list
 )
 
 
+;Question2
+(define (sum-up-numbers-simple L)
+)
+
 ;Question 4
 (define (min-above-min L1 L2)
   (cond
