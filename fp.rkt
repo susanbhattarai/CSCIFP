@@ -21,6 +21,7 @@ plus the head of list
     ((null? L1) #f)
     ((null? L2) (min-val L1))
     ((< (min-val L1) (min-val L2)) #f)
+    (#t (larger-number L1 (min-val L2)))
    )
 )
 ;Helper function to find the minimum value
@@ -44,18 +45,6 @@ plus the head of list
 )
 
 ;Function that takes a list and number as variable and return the number larger than the number
-#|
-(define (larger-number L1 num)
-  (cond
-    ((null? L1) #f)
-    ((not (number? (car L1))) (larger-number (cdr L1) num))
-    ((null? (cdr L1)) (car L1))
-    ((> (- (car L1) num) (- (larger-number (cdr l1) num) num)) (car L1))
-    (#t (larger-number (cdr L1) num))
-  )
-)
-|#
-
 ;Larger num recursive function
 (define (larger-number L1 num)
   (cond
@@ -64,6 +53,16 @@ plus the head of list
     ((> (car L1) num) (larger-number-tail (cdr L1) num (car L1)))
     (#t (larger-number (cdr L1) num))
   )
+)
+
+;Tail recursion
+(define (larger-number-tail L num high)
+  (cond
+    ((null? L) high)
+    ((not (number? (car L))) (larger-number-tail (cdr L) num high))
+    ((and (> (car L) num) (< (car L) high)) (larger-number-tail L num (car L)))
+    (#t (larger-number-tail (cdr L) num high))
+   )
 )
 
 
